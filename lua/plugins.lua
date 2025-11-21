@@ -125,6 +125,7 @@ require("lazy").setup({
 					require("flash").jump()
 				end,
 				desc = "Flash jump",
+				nowait = true,
 			},
 		},
 	},
@@ -132,10 +133,9 @@ require("lazy").setup({
 	-- Comment plugin (gco, gcc)
 	{
 		"numToStr/Comment.nvim",
-		lazy = false,
-		config = function()
-			require("Comment").setup()
-		end,
+		opts = {
+			-- add any options here
+		},
 	},
 
 	-- Theme
