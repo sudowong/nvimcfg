@@ -47,3 +47,18 @@ end, { desc = "Help tags" })
 vim.keymap.set("n", "<leader>p", function()
 	require("conform").format({ async = true })
 end, { desc = "Format with Prettier" })
+
+-- Comment Mappings
+local api = require("Comment.api")
+
+vim.keymap.set("n", "gco", function()
+	api.insert.linewise.below()
+end, { desc = "Comment below" })
+
+vim.keymap.set("n", "gcO", function()
+	api.insert.linewise.above()
+end, { desc = "Comment above" })
+
+vim.keymap.set("n", "gcc", function()
+	api.toggle.linewise.current()
+end, { desc = "Toggle comment" })
