@@ -117,14 +117,6 @@ require("lazy").setup({
     end,
   },
 
-  -- Comment.nvim plugin (gco, gcc)
-  {
-    "numToStr/Comment.nvim",
-    opts = {
-      -- add any options here
-    },
-  },
-
   -- Color Theme
   {
     "projekt0n/github-nvim-theme",
@@ -360,4 +352,14 @@ require("lazy").setup({
     },
   },
 
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    },
+
+  }
 })
