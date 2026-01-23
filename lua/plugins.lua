@@ -1,3 +1,5 @@
+------------ Plugin Manager ------------
+
 -- Lazy loader
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -128,25 +130,12 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
-	-- Fuzzy finder
-	-- {
-	-- 	"nvim-telescope/telescope.nvim",
-	-- 	tag = "0.1.5",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		require("telescope").setup()
-	-- 	end,
-	-- },
-
-	-- New fuzzy finder (testing): fzf lua
+	-- Fuzzy finder (fzf lua)
 	{
 		"ibhagwan/fzf-lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local fzf = require("fzf-lua")
-
 			fzf.setup({ { "fzf-vim", "max-perf", "hide" } })
 		end,
 	},
@@ -529,64 +518,6 @@ require("lazy").setup({
 		},
 	},
 
-	-- Flash.nvim
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		---@type Flash.Config
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Treesitter Search",
-			},
-			{
-				"<c-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
-			},
-		},
-	},
-
-	-- Smooth scrolling
-	{
-		"karb94/neoscroll.nvim",
-		opts = {
-			easing = "quadratic",
-		},
-	},
-
 	-- Typescript tooling (import updates, references, etc)
 	{
 		"pmizio/typescript-tools.nvim",
@@ -594,7 +525,7 @@ require("lazy").setup({
 		opts = {},
 	},
 
-	-- Tmux navigator
+	-- Tmux navigator (vim navigation for tmux panes)
 	{
 		"christoomey/vim-tmux-navigator",
 		cmd = {
