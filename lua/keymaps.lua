@@ -10,9 +10,6 @@ vim.keymap.set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- Centers cursor when deleting chunks
-vim.keymap.set("v", "d", "dzz", { noremap = true })
-
 -- Groups and move text up/dowm in visual mode
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -26,9 +23,10 @@ vim.keymap.set("n", "<", "<<", { noremap = true })
 vim.keymap.set("n", ">", ">>", { noremap = true })
 
 -- Show Diagnostic
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, {
+vim.keymap.set("n", "D", vim.diagnostic.open_float, {
 	desc = "[S]how [D]iagnostic",
 })
+
 ------------ Plugin Mappings ------------
 
 -- Oil
@@ -44,15 +42,26 @@ harpoon:setup()
 vim.keymap.set("n", "<leader>a", function()
 	harpoon:list():add()
 end)
+
 vim.keymap.set("n", "<leader>h", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
-for i = 1, 9 do
-	vim.keymap.set("n", "<leader>" .. i, function()
-		require("harpoon"):list():select(i)
-	end, { desc = "Harpoon goto " .. i })
-end
+vim.keymap.set("n", "th", function()
+	harpoon:list():select(1)
+end)
+vim.keymap.set("n", "tj", function()
+	harpoon:list():select(2)
+end)
+vim.keymap.set("n", "tk", function()
+	harpoon:list():select(3)
+end)
+vim.keymap.set("n", "tl", function()
+	harpoon:list():select(4)
+end)
+vim.keymap.set("n", "t;", function()
+	harpoon:list():select(5)
+end)
 
 -- Fzf Lua
 local fzf = require("fzf-lua")
