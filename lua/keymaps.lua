@@ -70,24 +70,15 @@ end)
 -- Fzf Lua
 local fzf = require("fzf-lua")
 
-vim.keymap.set("n", "<leader>ff", function()
+vim.keymap.set("n", "<leader>pf", function()
 	fzf.files({
 		fd_opts = "--type f --exclude node_modules",
 	})
-end, { desc = "[F]ind [F]iles" })
+end, { desc = "[P]review [F]iles" })
 
-vim.keymap.set("n", "<leader>fw", function()
+vim.keymap.set("n", "<leader>pw", function()
 	fzf.live_grep_native({ cmd = "rg --color=always --smart-case -g '!{.git,node_modules}/'" })
-end, { desc = "[F]ind [W]ord" })
+end, { desc = "[P]review [W]ord" })
 
 vim.keymap.set("n", "gd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Goto Implementation" })
-
--- TSTools
-vim.keymap.set("n", "<leader>rf", "<cmd>TSToolsFileReferences<cr>", { desc = "[R]e-[f]erences" })
-vim.keymap.set("n", "<leader>rn", "<cmd>TSToolsRenameFile<cr>", { desc = "[R]e-[n]ame" })
-
--- Flash
-vim.keymap.set({ "n", "x", "o" }, "fj", function()
-	require("flash").jump()
-end, { desc = "[F]lash [J]ump" })

@@ -33,8 +33,21 @@ vim.o.timeoutlen = 400
 -- No change in cursor
 vim.opt.guicursor = ""
 
--- Auto update buffer (for codex)
+-- Auto update buffer (for ai inserts)
 vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 	command = "checktime",
 })
+
+-- Theme
+vim.cmd.colorscheme("nuitbleue")
+
+vim.opt.laststatus = 0
+vim.opt.statusline = "%{repeat('⸺',winwidth('.'))}"
+
+-- Move file path to top right
+vim.opt.winbar = "%=%<%f"
+
+-- Remove status line % and line #
+vim.opt.showcmd = false
+vim.opt.ruler = false
